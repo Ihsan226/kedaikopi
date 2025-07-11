@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masuk - Kedai Kopi</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            min-height: 100vh;
+        }
+        .navbar {
+            background: #0f172a !important;
+        }
+        .nav-logo a {
+            color: #fbbf24 !important;
+            text-decoration: none;
+        }
+        .auth-section {
+            background: transparent !important;
+        }
+        .auth-form {
+            background: rgba(30, 41, 59, 0.8) !important;
+            border: 1px solid #334155 !important;
+            backdrop-filter: blur(20px);
+        }
+        .auth-form h2 {
+            color: #f8fafc !important;
+        }
+        .auth-form p {
+            color: #94a3b8 !important;
+        }
+        .form-group label {
+            color: #e2e8f0 !important;
+        }
+        .form-group input {
+            background: #334155 !important;
+            border: 2px solid #475569 !important;
+            color: #f8fafc !important;
+            padding: 0.8rem 1rem !important;
+            border-radius: 8px !important;
+            font-size: 1rem !important;
+            transition: all 0.3s ease !important;
+            width: 100% !important;
+        }
+        .form-group input:focus {
+            border-color: #d97706 !important;
+            box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.1) !important;
+            outline: none !important;
+            background: #3f4b5b !important;
+        }
+        .form-group input::placeholder {
+            color: #94a3b8 !important;
+        }
+        .password-input {
+            position: relative !important;
+        }
+        .password-input input {
+            padding-right: 3rem !important;
+        }
+        .toggle-password {
+            position: absolute !important;
+            right: 1rem !important;
+            top: 50% !important;
+            transform: translateY(-50%) !important;
+            background: none !important;
+            border: none !important;
+            color: #94a3b8 !important;
+            cursor: pointer !important;
+            font-size: 1.1rem !important;
+            transition: color 0.3s ease !important;
+        }
+        .toggle-password:hover {
+            color: #fbbf24 !important;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #d97706, #b45309) !important;
+            border: none !important;
+            color: #fff !important;
+            padding: 0.8rem 2rem !important;
+            border-radius: 8px !important;
+            font-weight: 600 !important;
+            font-size: 1rem !important;
+            transition: all 0.3s ease !important;
+            box-shadow: 0 4px 15px rgba(217, 119, 6, 0.3) !important;
+            text-transform: none !important;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 20px rgba(217, 119, 6, 0.4) !important;
+            background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+        }
+        .btn-primary:active {
+            transform: translateY(0px) !important;
+            box-shadow: 0 2px 10px rgba(217, 119, 6, 0.3) !important;
+        }
+        .btn-full {
+            width: 100% !important;
+        }
+        .auth-divider {
+            text-align: center !important;
+            margin: 2rem 0 !important;
+            color: #64748b !important;
+            position: relative !important;
+        }
+        .auth-divider::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 50% !important;
+            left: 0 !important;
+            right: 0 !important;
+            height: 1px !important;
+            background: #334155 !important;
+            z-index: 1 !important;
+        }
+        .auth-divider span {
+            background: rgba(30, 41, 59, 0.8) !important;
+            padding: 0 1rem !important;
+            position: relative !important;
+            z-index: 2 !important;
+        }
+        .auth-link a {
+            color: #fbbf24 !important;
+        }
+        .demo-data {
+            background: rgba(217, 119, 6, 0.1) !important;
+            border: 1px solid #d97706 !important;
+            color: #f8fafc !important;
+            border-radius: 8px !important;
+        }
+        .demo-data h4 {
+            color: #fbbf24 !important;
+            margin-bottom: 0.5rem !important;
+        }
+        .toggle-password {
+            color: #94a3b8 !important;
+            background: none !important;
+            border: none !important;
+        }
+        .toggle-password:hover {
+            color: #fbbf24 !important;
+        }
+        .form-options {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            margin-bottom: 2rem !important;
+            font-size: 0.9rem !important;
+        }
+        .checkbox-label {
+            color: #e2e8f0 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.8rem !important;
+            cursor: pointer !important;
+            line-height: 1.5 !important;
+            margin-bottom: 0 !important;
+            user-select: none !important;
+        }
+        .checkbox-label input[type="checkbox"] {
+            opacity: 0 !important;
+            position: absolute !important;
+            width: 0 !important;
+            height: 0 !important;
+        }
+        .checkmark {
+            width: 18px !important;
+            height: 18px !important;
+            background: #334155 !important;
+            border: 2px solid #475569 !important;
+            border-radius: 4px !important;
+            position: relative !important;
+            transition: all 0.3s ease !important;
+            flex-shrink: 0 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+        .checkbox-label:hover .checkmark {
+            border-color: #d97706 !important;
+            background: #475569 !important;
+            transform: scale(1.05) !important;
+        }
+        .checkbox-label input[type="checkbox"]:checked + .checkmark {
+            background: linear-gradient(135deg, #d97706, #b45309) !important;
+            border-color: #d97706 !important;
+            box-shadow: 0 0 10px rgba(217, 119, 6, 0.3) !important;
+        }
+        .checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+            content: '✓' !important;
+            position: absolute !important;
+            top: 50% !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%) scale(1) !important;
+            color: #fff !important;
+            font-size: 11px !important;
+            font-weight: bold !important;
+            animation: checkmarkPop 0.3s ease !important;
+        }
+        @keyframes checkmarkPop {
+            0% { transform: translate(-50%, -50%) scale(0) !important; }
+            50% { transform: translate(-50%, -50%) scale(1.2) !important; }
+            100% { transform: translate(-50%, -50%) scale(1) !important; }
+        }
+        .auth-footer {
+            text-align: center !important;
+            margin-top: 2rem !important;
+            color: #94a3b8 !important;
+        }
+        .auth-footer a {
+            color: #fbbf24 !important;
+            font-weight: 500 !important;
+        }
+        .auth-image {
+            display: none !important;
+        }
+        @media (min-width: 1024px) {
+            .auth-container {
+                max-width: 900px !important;
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
+                gap: 2rem !important;
+                align-items: center !important;
+            }
+            .auth-image {
+                display: block !important;
+                position: relative !important;
+                border-radius: 12px !important;
+                overflow: hidden !important;
+            }
+            .auth-image img {
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: cover !important;
+            }
+            .auth-overlay {
+                position: absolute !important;
+                bottom: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                background: linear-gradient(transparent, rgba(0,0,0,0.8)) !important;
+                padding: 2rem !important;
+                color: #fff !important;
+            }
+        }
+        .btn-google, .btn-facebook {
+            background: #334155 !important;
+            border: 2px solid #475569 !important;
+            color: #e2e8f0 !important;
+            padding: 0.8rem 1.5rem !important;
+            border-radius: 8px !important;
+            font-weight: 500 !important;
+            transition: all 0.3s ease !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 0.8rem !important;
+            margin-bottom: 1rem !important;
+            backdrop-filter: blur(10px) !important;
+        }
+        .btn-google:hover {
+            border-color: #ea4335 !important;
+            background: rgba(234, 67, 53, 0.1) !important;
+            box-shadow: 0 4px 15px rgba(234, 67, 53, 0.2) !important;
+            transform: translateY(-2px) !important;
+        }
+        .btn-facebook:hover {
+            border-color: #1877f2 !important;
+            background: rgba(24, 119, 242, 0.1) !important;
+            box-shadow: 0 4px 15px rgba(24, 119, 242, 0.2) !important;
+            transform: translateY(-2px) !important;
+        }
+        .social-login .btn {
+            width: 100% !important;
+            margin-bottom: 0.8rem !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" style="background: #0f172a !important;">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" style="color: #fbbf24 !important; text-decoration: none;">
+                    <i class="fas fa-coffee"></i>
+                    <span>Kedai Kopi</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login Section -->
+    <section class="auth-section">
+        <div class="auth-container">
+            <div class="auth-form">
+                <h2>Masuk ke Akun Anda</h2>
+                <p>Silakan masukkan email dan password Anda</p>
+                
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="password-input">
+                            <input type="password" id="password" name="password" required>
+                            <button type="button" class="toggle-password" onclick="togglePassword()">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="remember">
+                            <span class="checkmark"></span>
+                            Ingat saya
+                        </label>
+                        <a href="#" class="forgot-password">Lupa password?</a>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-full">Masuk</button>
+                </form>
+                
+                <div class="auth-divider">
+                    <span>atau</span>
+                </div>
+                
+                <div class="social-login">
+                    <button class="btn btn-social btn-google">
+                        <i class="fab fa-google"></i>
+                        Masuk dengan Google
+                    </button>
+                    <button class="btn btn-social btn-facebook">
+                        <i class="fab fa-facebook"></i>
+                        Masuk dengan Facebook
+                    </button>
+                </div>
+                
+                <div class="auth-footer">
+                    <p>Belum punya akun? <a href="register.html">Daftar sekarang</a></p>
+                    <p><a href="admin-login.html">Login sebagai Admin</a></p>
+                </div>
+            </div>
+            
+            <div class="auth-image">
+                <img src="assets/images/login-coffee.jpg" alt="Coffee Login">
+                <div class="auth-overlay">
+                    <h3>Selamat Datang Kembali!</h3>
+                    <p>Nikmati pengalaman berbelanja kopi terbaik bersama kami</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="assets/js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Kedai Kopi</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <i class="fas fa-coffee"></i>
+                    <span>Kedai Kopi</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Checkout Section -->
+    <section class="checkout-section">
+        <div class="container">
+            <div class="page-header">
+                <h1>Checkout</h1>
+                <nav class="breadcrumb">
+                    <a href="index.html">Beranda</a> / <a href="cart.html">Keranjang</a> / Checkout
+                </nav>
+            </div>
+            
+            <!-- Checkout Steps -->
+            <div class="checkout-steps">
+                <div class="step active">
+                    <span class="step-number">1</span>
+                    <span class="step-title">Informasi Pengiriman</span>
+                </div>
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <span class="step-title">Metode Pembayaran</span>
+                </div>
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <span class="step-title">Konfirmasi</span>
+                </div>
+            </div>
+            
+            <div class="checkout-container">
+                <div class="checkout-form">
+                    <form id="checkoutForm">
+                        <!-- Step 1: Shipping Information -->
+                        <div class="checkout-step" id="step1">
+                            <h2>Informasi Pengiriman</h2>
+                            
+                            <div class="form-section">
+                                <h3>Data Penerima</h3>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="firstName">Nama Depan *</label>
+                                        <input type="text" id="firstName" name="firstName" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="lastName">Nama Belakang *</label>
+                                        <input type="text" id="lastName" name="lastName" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="phone">Nomor Telepon *</label>
+                                    <input type="tel" id="phone" name="phone" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email">Email *</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-section">
+                                <h3>Alamat Pengiriman</h3>
+                                <div class="form-group">
+                                    <label for="address">Alamat Lengkap *</label>
+                                    <textarea id="address" name="address" rows="3" placeholder="Jalan, nomor rumah, RT/RW" required></textarea>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="city">Kota *</label>
+                                        <select id="city" name="city" required>
+                                            <option value="">Pilih Kota</option>
+                                            <option value="jakarta">Jakarta</option>
+                                            <option value="surabaya">Surabaya</option>
+                                            <option value="bandung">Bandung</option>
+                                            <option value="medan">Medan</option>
+                                            <option value="semarang">Semarang</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="postalCode">Kode Pos *</label>
+                                        <input type="text" id="postalCode" name="postalCode" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="notes">Catatan Tambahan</label>
+                                    <textarea id="notes" name="notes" rows="2" placeholder="Instruksi khusus untuk kurir"></textarea>
+                                </div>
+                            </div>
+                            
+                            <button type="button" class="btn btn-primary" onclick="nextStep(2)">
+                                Lanjut ke Pembayaran
+                            </button>
+                        </div>
+                        
+                        <!-- Step 2: Payment Method -->
+                        <div class="checkout-step" id="step2" style="display: none;">
+                            <h2>Metode Pembayaran</h2>
+                            
+                            <div class="payment-methods">
+                                <div class="payment-option">
+                                    <input type="radio" id="bank-transfer" name="paymentMethod" value="bank-transfer">
+                                    <label for="bank-transfer" class="payment-label">
+                                        <div class="payment-info">
+                                            <i class="fas fa-university"></i>
+                                            <div>
+                                                <h4>Transfer Bank</h4>
+                                                <p>Transfer ke rekening bank kami</p>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                                
+                                <div class="payment-option">
+                                    <input type="radio" id="e-wallet" name="paymentMethod" value="e-wallet">
+                                    <label for="e-wallet" class="payment-label">
+                                        <div class="payment-info">
+                                            <i class="fas fa-mobile-alt"></i>
+                                            <div>
+                                                <h4>E-Wallet</h4>
+                                                <p>Bayar menggunakan OVO, GoPay, DANA</p>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                                
+                                <div class="payment-option">
+                                    <input type="radio" id="cod" name="paymentMethod" value="cod">
+                                    <label for="cod" class="payment-label">
+                                        <div class="payment-info">
+                                            <i class="fas fa-money-bill-wave"></i>
+                                            <div>
+                                                <h4>Cash on Delivery (COD)</h4>
+                                                <p>Bayar saat barang diterima</p>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-outline" onclick="prevStep(1)">
+                                    Kembali
+                                </button>
+                                <button type="button" class="btn btn-primary" onclick="nextStep(3)">
+                                    Lanjut ke Konfirmasi
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 3: Confirmation -->
+                        <div class="checkout-step" id="step3" style="display: none;">
+                            <h2>Konfirmasi Pesanan</h2>
+                            
+                            <div class="confirmation-sections">
+                                <div class="confirmation-section">
+                                    <h3>Informasi Pengiriman</h3>
+                                    <div class="info-display" id="shippingInfo">
+                                        <!-- Data pengiriman akan ditampilkan di sini -->
+                                    </div>
+                                    <button type="button" class="btn-link" onclick="prevStep(1)">Edit</button>
+                                </div>
+                                
+                                <div class="confirmation-section">
+                                    <h3>Metode Pembayaran</h3>
+                                    <div class="info-display" id="paymentInfo">
+                                        <!-- Data pembayaran akan ditampilkan di sini -->
+                                    </div>
+                                    <button type="button" class="btn-link" onclick="prevStep(2)">Edit</button>
+                                </div>
+                            </div>
+                            
+                            <div class="terms-agreement">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="agreeTerms" required>
+                                    <span class="checkmark"></span>
+                                    Saya setuju dengan <a href="#" class="link">Syarat & Ketentuan</a> pembelian
+                                </label>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-outline" onclick="prevStep(2)">
+                                    Kembali
+                                </button>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-lock"></i>
+                                    Buat Pesanan
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Order Summary -->
+                <div class="order-summary">
+                    <div class="summary-card">
+                        <h3>Ringkasan Pesanan</h3>
+                        
+                        <div class="order-items" id="orderItems">
+                            <!-- Order items akan dimuat dari JavaScript -->
+                        </div>
+                        
+                        <hr>
+                        
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span id="orderSubtotal">Rp 0</span>
+                        </div>
+                        
+                        <div class="summary-row">
+                            <span>Ongkos Kirim</span>
+                            <span id="orderShipping">Rp 15.000</span>
+                        </div>
+                        
+                        <div class="summary-row">
+                            <span>Pajak (11%)</span>
+                            <span id="orderTax">Rp 0</span>
+                        </div>
+                        
+                        <hr>
+                        
+                        <div class="summary-row total">
+                            <span>Total Pembayaran</span>
+                            <span id="orderTotal">Rp 0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="security-info">
+                        <div class="security-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Transaksi Aman & Terpercaya</span>
+                        </div>
+                        <div class="security-item">
+                            <i class="fas fa-truck"></i>
+                            <span>Pengiriman Cepat & Aman</span>
+                        </div>
+                        <div class="security-item">
+                            <i class="fas fa-undo"></i>
+                            <span>Garansi 100% Uang Kembali</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="assets/js/checkout.js"></script>
+</body>
+</html>

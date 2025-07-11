@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>Kedai Kopi - Kopi Berkualitas untuk Anda</title>
+    <link rel="stylesheet" href="assets/css/style.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Force dark navbar */
+        .navbar {
+            background: #0f172a !important;
+            background-color: #0f172a !important;
+        }
+        .nav-link {
+            color: #e2e8f0 !important;
+        }
+        .nav-link:hover {
+            color: #fbbf24 !important;
+        }
+        .nav-logo {
+            color: #fbbf24 !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" style="background-color: #0f172a !important; background: #0f172a !important;">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-coffee"></i>
+                <span>Kedai Kopi</span>
+            </div>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link">Beranda</a>
+                <a href="#products" class="nav-link">Produk</a>
+                <a href="#about" class="nav-link">Tentang</a>
+                <a href="#contact" class="nav-link">Kontak</a>
+                <div class="nav-auth">
+                    <a href="login.html" class="nav-link">Masuk</a>
+                    <a href="register.html" class="btn btn-primary">Daftar</a>
+                    <a href="cart.html" class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Selamat Datang di Kedai Kopi</h1>
+            <p>Nikmati kopi berkualitas premium dengan cita rasa terbaik dari berbagai nusantara</p>
+            <a href="#products" class="btn btn-primary">Jelajahi Produk</a>
+        </div>
+        <div class="hero-image">
+            <img src="assets/images/coffee-hero.jpg" alt="Coffee Hero" />
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <h2>Kategori Produk</h2>
+            <div class="category-grid">
+                <div class="category-card" onclick="filterProducts('kopi-bubuk')">
+                    <i class="fas fa-seedling"></i>
+                    <h3>Kopi Bubuk</h3>
+                    <p>Kopi bubuk segar siap seduh</p>
+                </div>
+                <div class="category-card" onclick="filterProducts('kopi-biji')">
+                    <i class="fas fa-coffee"></i>
+                    <h3>Kopi Biji</h3>
+                    <p>Biji kopi pilihan untuk para pecinta</p>
+                </div>
+                <div class="category-card" onclick="filterProducts('kopi-instan')">
+                    <i class="fas fa-mug-hot"></i>
+                    <h3>Kopi Instan</h3>
+                    <p>Kopi praktis untuk kehidupan modern</p>
+                </div>
+                <div class="category-card" onclick="filterProducts('alat-seduh')">
+                    <i class="fas fa-filter"></i>
+                    <h3>Alat Seduh</h3>
+                    <p>Peralatan seduh kopi profesional</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="container">
+            <h2>Produk Terbaru</h2>
+            <div class="filter-tabs">
+                <button class="filter-btn active" onclick="filterProducts('all')">Semua</button>
+                <button class="filter-btn" onclick="filterProducts('kopi-bubuk')">Kopi Bubuk</button>
+                <button class="filter-btn" onclick="filterProducts('kopi-biji')">Kopi Biji</button>
+                <button class="filter-btn" onclick="filterProducts('kopi-instan')">Kopi Instan</button>
+                <button class="filter-btn" onclick="filterProducts('alat-seduh')">Alat Seduh</button>
+            </div>
+            <div class="products-grid" id="products-grid">
+                <!-- Products akan dimuat dari JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Tentang Kedai Kopi</h2>
+                    <p>Kedai Kopi hadir untuk memberikan pengalaman kopi terbaik bagi para pecinta kopi di Indonesia. Kami menyediakan berbagai jenis kopi berkualitas premium dari berbagai daerah di nusantara.</p>
+                    <p>Dengan komitmen terhadap kualitas dan pelayanan terbaik, kami menghadirkan produk-produk pilihan yang telah melalui proses seleksi ketat untuk memastikan cita rasa yang sempurna.</p>
+                    <div class="about-features">
+                        <div class="feature">
+                            <i class="fas fa-award"></i>
+                            <span>Kualitas Premium</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-shipping-fast"></i>
+                            <span>Pengiriman Cepat</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-headset"></i>
+                            <span>Layanan 24/7</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="assets/images/about-coffee.jpg" alt="About Coffee" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Hubungi Kami</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Alamat</h3>
+                            <p>Jl. Kopi Nikmat No. 123, Jakarta Selatan</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Telepon</h3>
+                            <p>+62 812-3456-7890</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>info@kedaikopi.com</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Nama Anda" required>
+                    <input type="email" placeholder="Email Anda" required>
+                    <textarea placeholder="Pesan Anda" rows="5" required></textarea>
+                    <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-coffee"></i>
+                        <span>Kedai Kopi</span>
+                    </div>
+                    <p>Kedai Kopi terpercaya dengan kualitas premium untuk kepuasan pelanggan.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Menu</h3>
+                    <ul>
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#products">Produk</a></li>
+                        <li><a href="#about">Tentang</a></li>
+                        <li><a href="#contact">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Kategori</h3>
+                    <ul>
+                        <li><a href="#">Kopi Bubuk</a></li>
+                        <li><a href="#">Kopi Biji</a></li>
+                        <li><a href="#">Kopi Instan</a></li>
+                        <li><a href="#">Alat Seduh</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Informasi</h3>
+                    <ul>
+                        <li><a href="#">Kebijakan Privasi</a></li>
+                        <li><a href="#">Syarat & Ketentuan</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Bantuan</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Kedai Kopi. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/db-migration.js"></script>
+</body>
+</html>

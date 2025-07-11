@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akun Saya - Kedai Kopi</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <i class="fas fa-coffee"></i>
+                    <span>Kedai Kopi</span>
+                </a>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Beranda</a>
+                <a href="index.html#products" class="nav-link">Produk</a>
+                <div class="nav-auth">
+                    <a href="account.html" class="nav-link active">Akun Saya</a>
+                    <a href="cart.html" class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Account Section -->
+    <section class="account-section">
+        <div class="container">
+            <div class="page-header">
+                <h1>Akun Saya</h1>
+                <nav class="breadcrumb">
+                    <a href="index.html">Beranda</a> / Akun Saya
+                </nav>
+            </div>
+            
+            <div class="account-container">
+                <!-- Account Sidebar -->
+                <div class="account-sidebar">
+                    <div class="user-profile">
+                        <div class="profile-avatar">
+                            <img src="assets/images/default-avatar.png" alt="User Avatar" id="userAvatar">
+                            <button class="edit-avatar">
+                                <i class="fas fa-camera"></i>
+                            </button>
+                        </div>
+                        <div class="profile-info">
+                            <h3 id="userName">John Doe</h3>
+                            <p id="userEmail">john.doe@email.com</p>
+                            <span class="user-status premium">Member Premium</span>
+                        </div>
+                    </div>
+                    
+                    <nav class="account-menu">
+                        <a href="#dashboard" class="menu-item active" onclick="showSection('dashboard')">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                        <a href="#orders" class="menu-item" onclick="showSection('orders')">
+                            <i class="fas fa-box"></i>
+                            <span>Pesanan Saya</span>
+                            <span class="badge">3</span>
+                        </a>
+                        <a href="#profile" class="menu-item" onclick="showSection('profile')">
+                            <i class="fas fa-user"></i>
+                            <span>Profil</span>
+                        </a>
+                        <a href="#addresses" class="menu-item" onclick="showSection('addresses')">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Alamat</span>
+                        </a>
+                        <a href="#payments" class="menu-item" onclick="showSection('payments')">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Pembayaran</span>
+                        </a>
+                        <a href="#wishlist" class="menu-item" onclick="showSection('wishlist')">
+                            <i class="fas fa-heart"></i>
+                            <span>Wishlist</span>
+                        </a>
+                        <a href="#settings" class="menu-item" onclick="showSection('settings')">
+                            <i class="fas fa-cog"></i>
+                            <span>Pengaturan</span>
+                        </a>
+                        <a href="#" class="menu-item logout" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Keluar</span>
+                        </a>
+                    </nav>
+                </div>
+                
+                <!-- Account Content -->
+                <div class="account-content">
+                    <!-- Dashboard Section -->
+                    <div class="content-section active" id="dashboard">
+                        <h2>Dashboard</h2>
+                        
+                        <div class="dashboard-stats">
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-box"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h3>12</h3>
+                                    <p>Total Pesanan</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h3>Rp 1.250.000</h3>
+                                    <p>Total Pembelian</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h3>8</h3>
+                                    <p>Produk Favorit</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h3>4.8</h3>
+                                    <p>Rating Rata-rata</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="recent-orders">
+                            <h3>Pesanan Terbaru</h3>
+                            <div class="orders-list">
+                                <!-- Recent orders akan dimuat dari JavaScript -->
+                            </div>
+                            <a href="#orders" class="btn btn-outline" onclick="showSection('orders')">
+                                Lihat Semua Pesanan
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Orders Section -->
+                    <div class="content-section" id="orders">
+                        <h2>Pesanan Saya</h2>
+                        
+                        <div class="orders-filter">
+                            <button class="filter-btn active" onclick="filterOrders('all')">Semua</button>
+                            <button class="filter-btn" onclick="filterOrders('pending')">Menunggu</button>
+                            <button class="filter-btn" onclick="filterOrders('processing')">Diproses</button>
+                            <button class="filter-btn" onclick="filterOrders('shipped')">Dikirim</button>
+                            <button class="filter-btn" onclick="filterOrders('delivered')">Selesai</button>
+                            <button class="filter-btn" onclick="filterOrders('cancelled')">Dibatalkan</button>
+                        </div>
+                        
+                        <div class="orders-container" id="ordersContainer">
+                            <!-- Orders akan dimuat dari JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <!-- Profile Section -->
+                    <div class="content-section" id="profile">
+                        <h2>Profil Saya</h2>
+                        
+                        <form class="profile-form" id="profileForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="profileFirstName">Nama Depan</label>
+                                    <input type="text" id="profileFirstName" name="firstName" value="John">
+                                </div>
+                                <div class="form-group">
+                                    <label for="profileLastName">Nama Belakang</label>
+                                    <input type="text" id="profileLastName" name="lastName" value="Doe">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="profileEmail">Email</label>
+                                <input type="email" id="profileEmail" name="email" value="john.doe@email.com" readonly>
+                                <small>Email tidak dapat diubah</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="profilePhone">Nomor Telepon</label>
+                                <input type="tel" id="profilePhone" name="phone" value="+62 812-3456-7890">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="profileBirth">Tanggal Lahir</label>
+                                <input type="date" id="profileBirth" name="birthDate" value="1990-01-01">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="profileGender">Jenis Kelamin</label>
+                                <select id="profileGender" name="gender">
+                                    <option value="male">Laki-laki</option>
+                                    <option value="female">Perempuan</option>
+                                    <option value="other">Lainnya</option>
+                                </select>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                        </form>
+                    </div>
+                    
+                    <!-- Other sections akan ditambahkan sesuai kebutuhan -->
+                    <div class="content-section" id="addresses">
+                        <h2>Alamat Saya</h2>
+                        <p>Kelola alamat pengiriman Anda</p>
+                        <!-- Address management content -->
+                    </div>
+                    
+                    <div class="content-section" id="payments">
+                        <h2>Metode Pembayaran</h2>
+                        <p>Kelola metode pembayaran Anda</p>
+                        <!-- Payment methods content -->
+                    </div>
+                    
+                    <div class="content-section" id="wishlist">
+                        <h2>Wishlist</h2>
+                        <p>Produk yang Anda simpan untuk nanti</p>
+                        <!-- Wishlist content -->
+                    </div>
+                    
+                    <div class="content-section" id="settings">
+                        <h2>Pengaturan Akun</h2>
+                        <p>Kelola preferensi dan keamanan akun</p>
+                        <!-- Settings content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="assets/js/account.js"></script>
+</body>
+</html>

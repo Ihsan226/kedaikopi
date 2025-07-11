@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar - Kedai Kopi</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            min-height: 100vh;
+        }
+        .navbar {
+            background: #0f172a !important;
+        }
+        .nav-logo a {
+            color: #fbbf24 !important;
+            text-decoration: none;
+        }
+        .auth-section {
+            background: transparent !important;
+        }
+        .auth-form {
+            background: rgba(30, 41, 59, 0.8) !important;
+            border: 1px solid #334155 !important;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+        }
+        .auth-form h2 {
+            color: #f8fafc !important;
+            background: linear-gradient(135deg, #d97706, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .auth-form p {
+            color: #94a3b8 !important;
+        }
+        .form-group label {
+            color: #e2e8f0 !important;
+        }
+        .form-group input {
+            background: #334155 !important;
+            border: 1px solid #475569 !important;
+            color: #f8fafc !important;
+        }
+        .form-group input:focus {
+            border-color: #d97706 !important;
+            box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.1) !important;
+            background: #1e293b !important;
+        }
+        .form-group input::placeholder {
+            color: #94a3b8 !important;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #d97706, #b45309) !important;
+            box-shadow: 0 4px 15px rgba(217, 119, 6, 0.3) !important;
+            border: none !important;
+            color: #fff !important;
+            font-weight: 600 !important;
+            transition: all 0.3s ease !important;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(217, 119, 6, 0.4) !important;
+        }
+        .auth-link a {
+            color: #fbbf24 !important;
+        }
+        .demo-data {
+            background: rgba(217, 119, 6, 0.1) !important;
+            border: 1px solid #d97706 !important;
+            color: #f8fafc !important;
+            border-radius: 8px !important;
+        }
+        .demo-data h4 {
+            color: #fbbf24 !important;
+            margin-bottom: 0.5rem !important;
+        }
+        .social-login {
+            margin-top: 1.5rem !important;
+        }
+        .social-btn {
+            width: 100% !important;
+            padding: 0.8rem !important;
+            margin-bottom: 0.8rem !important;
+            border-radius: 8px !important;
+            border: 1px solid #475569 !important;
+            background: #334155 !important;
+            color: #f8fafc !important;
+            transition: all 0.3s ease !important;
+        }
+        .social-btn:hover {
+            background: #475569 !important;
+            transform: translateY(-1px) !important;
+        }
+        .checkbox-label {
+            color: #e2e8f0 !important;
+            display: flex !important;
+            align-items: flex-start !important;
+            gap: 0.8rem !important;
+            cursor: pointer !important;
+            line-height: 1.5 !important;
+            margin-bottom: 0 !important;
+        }
+        .checkbox-label input[type="checkbox"] {
+            opacity: 0 !important;
+            position: absolute !important;
+            width: 0 !important;
+            height: 0 !important;
+        }
+        .checkmark {
+            width: 20px !important;
+            height: 20px !important;
+            background: #334155 !important;
+            border: 2px solid #475569 !important;
+            border-radius: 4px !important;
+            position: relative !important;
+            transition: all 0.3s ease !important;
+            flex-shrink: 0 !important;
+            margin-top: 2px !important;
+        }
+        .checkbox-label:hover .checkmark {
+            border-color: #d97706 !important;
+            background: #475569 !important;
+        }
+        .checkbox-label input[type="checkbox"]:checked + .checkmark {
+            background: linear-gradient(135deg, #d97706, #b45309) !important;
+            border-color: #d97706 !important;
+        }
+        .checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+            content: '✓' !important;
+            position: absolute !important;
+            top: 50% !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%) !important;
+            color: #fff !important;
+            font-size: 12px !important;
+            font-weight: bold !important;
+        }
+        .checkbox-label .link {
+            color: #fbbf24 !important;
+            text-decoration: none !important;
+        }
+        .checkbox-label .link:hover {
+            color: #f59e0b !important;
+            text-decoration: underline !important;
+        }
+        .social-login {
+            margin-top: 1.5rem !important;
+            padding-top: 1.5rem !important;
+            border-top: 1px solid #475569 !important;
+        }
+        .btn-social {
+            width: 100% !important;
+            padding: 0.9rem !important;
+            margin-bottom: 0.8rem !important;
+            border-radius: 8px !important;
+            border: 1px solid #475569 !important;
+            background: #334155 !important;
+            color: #f8fafc !important;
+            transition: all 0.3s ease !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 0.8rem !important;
+            font-weight: 500 !important;
+        }
+        .btn-social:hover {
+            background: #475569 !important;
+            transform: translateY(-1px) !important;
+            border-color: #d97706 !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+        }
+        .btn-google:hover {
+            border-color: #ea4335 !important;
+            box-shadow: 0 4px 15px rgba(234, 67, 53, 0.2) !important;
+        }
+        .btn-facebook:hover {
+            border-color: #1877f2 !important;
+            box-shadow: 0 4px 15px rgba(24, 119, 242, 0.2) !important;
+        }
+        .auth-divider {
+            text-align: center !important;
+            margin: 1.5rem 0 !important;
+            position: relative !important;
+            color: #94a3b8 !important;
+        }
+        .auth-divider::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 50% !important;
+            left: 0 !important;
+            right: 0 !important;
+            height: 1px !important;
+            background: #475569 !important;
+        }
+        .auth-divider span {
+            background: rgba(30, 41, 59, 0.9) !important;
+            padding: 0 1rem !important;
+            position: relative !important;
+            z-index: 1 !important;
+        }
+        .auth-footer {
+            text-align: center !important;
+            margin-top: 2rem !important;
+            color: #94a3b8 !important;
+        }
+        .auth-footer a {
+            color: #fbbf24 !important;
+            font-weight: 500 !important;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" style="background: #0f172a !important;">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" style="color: #fbbf24 !important; text-decoration: none;">
+                    <i class="fas fa-coffee"></i>
+                    <span>Kedai Kopi</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Register Section -->
+    <section class="auth-section">
+        <div class="auth-container">
+            <div class="auth-form">
+                <h2>Buat Akun Baru</h2>
+                <p>Bergabunglah dengan komunitas pecinta kopi kami</p>
+                
+                <form id="registerForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">Nama Depan</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Nama Belakang</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Nomor Telepon</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="password-input">
+                            <input type="password" id="password" name="password" required>
+                            <button type="button" class="toggle-password" onclick="togglePassword('password')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="password-strength">
+                            <div class="strength-bar"></div>
+                            <span class="strength-text">Minimal 8 karakter</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirmPassword">Konfirmasi Password</label>
+                        <div class="password-input">
+                            <input type="password" id="confirmPassword" name="confirmPassword" required>
+                            <button type="button" class="toggle-password" onclick="togglePassword('confirmPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="terms" required>
+                            <span class="checkmark"></span>
+                            Saya setuju dengan <a href="#" class="link">Syarat & Ketentuan</a> dan <a href="#" class="link">Kebijakan Privasi</a>
+                        </label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="newsletter">
+                            <span class="checkmark"></span>
+                            Saya ingin menerima newsletter dan update promosi
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-full">Daftar Sekarang</button>
+                </form>
+                
+                <div class="auth-divider">
+                    <span>atau</span>
+                </div>
+                
+                <div class="social-login">
+                    <button class="btn btn-social btn-google">
+                        <i class="fab fa-google"></i>
+                        Daftar dengan Google
+                    </button>
+                    <button class="btn btn-social btn-facebook">
+                        <i class="fab fa-facebook"></i>
+                        Daftar dengan Facebook
+                    </button>
+                </div>
+                
+                <div class="auth-footer">
+                    <p>Sudah punya akun? <a href="login.html">Masuk sekarang</a></p>
+                </div>
+            </div>
+            
+            <div class="auth-image">
+                <img src="assets/images/register-coffee.jpg" alt="Coffee Register">
+                <div class="auth-overlay">
+                    <h3>Bergabung dengan Kami!</h3>
+                    <p>Dapatkan akses ke produk eksklusif dan penawaran khusus</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="assets/js/auth.js"></script>
+</body>
+</html>

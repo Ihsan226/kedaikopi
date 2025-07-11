@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konfirmasi Pesanan - Kedai Kopi</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-coffee"></i>
+                    <span>Kedai Kopi</span>
+                </div>
+                
+                <ul class="nav-menu">
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="index.html#products">Produk</a></li>
+                    <li><a href="cart.html">Keranjang</a></li>
+                    <li><a href="account.html">Akun</a></li>
+                </ul>
+                
+                <div class="nav-icons">
+                    <a href="cart.html" class="nav-icon cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <a href="account.html" class="nav-icon">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </div>
+                
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Order Confirmation Section -->
+            <section class="order-confirmation">
+                <div class="confirmation-header">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h1>Pesanan Berhasil Dibuat!</h1>
+                    <p>Terima kasih telah berbelanja di Kedai Kopi. Pesanan Anda sedang diproses.</p>
+                </div>
+
+                <div class="confirmation-details">
+                    <div class="order-summary">
+                        <h2>Detail Pesanan</h2>
+                        <div class="order-info">
+                            <div class="order-id">
+                                <span class="label">Nomor Pesanan:</span>
+                                <span class="value" id="orderNumber">KK20250001</span>
+                            </div>
+                            <div class="order-date">
+                                <span class="label">Tanggal Pesanan:</span>
+                                <span class="value" id="orderDate">10 Januari 2025</span>
+                            </div>
+                            <div class="order-status">
+                                <span class="label">Status:</span>
+                                <span class="value status-pending">Menunggu Pembayaran</span>
+                            </div>
+                        </div>
+
+                        <div class="order-items">
+                            <h3>Produk yang Dipesan</h3>
+                            <div id="orderItemsList">
+                                <!-- Order items will be loaded here -->
+                            </div>
+                        </div>
+
+                        <div class="order-total">
+                            <div class="total-row">
+                                <span>Subtotal:</span>
+                                <span id="subtotalAmount">Rp 0</span>
+                            </div>
+                            <div class="total-row">
+                                <span>Ongkos Kirim:</span>
+                                <span id="shippingAmount">Rp 15.000</span>
+                            </div>
+                            <div class="total-row discount-row" id="discountRow" style="display: none;">
+                                <span>Diskon:</span>
+                                <span id="discountAmount">-Rp 0</span>
+                            </div>
+                            <div class="total-row grand-total">
+                                <span>Total:</span>
+                                <span id="grandTotalAmount">Rp 0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="payment-instructions">
+                        <h2>Instruksi Pembayaran</h2>
+                        <div class="payment-method" id="paymentInstructions">
+                            <!-- Payment instructions will be loaded here -->
+                        </div>
+                    </div>
+
+                    <div class="shipping-info">
+                        <h2>Informasi Pengiriman</h2>
+                        <div class="shipping-address" id="shippingAddress">
+                            <!-- Shipping address will be loaded here -->
+                        </div>
+                        <div class="estimated-delivery">
+                            <i class="fas fa-truck"></i>
+                            <span>Estimasi pengiriman: <strong id="estimatedDelivery">3-5 hari kerja</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="confirmation-actions">
+                    <button class="btn btn-primary" onclick="printOrder()">
+                        <i class="fas fa-print"></i>
+                        Cetak Pesanan
+                    </button>
+                    <a href="account.html" class="btn btn-outline">
+                        <i class="fas fa-user"></i>
+                        Lihat Semua Pesanan
+                    </a>
+                    <a href="index.html" class="btn btn-secondary">
+                        <i class="fas fa-home"></i>
+                        Kembali ke Beranda
+                    </a>
+                </div>
+
+                <div class="order-tracking">
+                    <h2>Lacak Pesanan Anda</h2>
+                    <div class="tracking-steps">
+                        <div class="tracking-step active">
+                            <div class="step-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <div class="step-info">
+                                <h4>Pesanan Dibuat</h4>
+                                <p>Pesanan Anda telah berhasil dibuat</p>
+                            </div>
+                        </div>
+                        <div class="tracking-step">
+                            <div class="step-icon">
+                                <i class="fas fa-credit-card"></i>
+                            </div>
+                            <div class="step-info">
+                                <h4>Menunggu Pembayaran</h4>
+                                <p>Silakan lakukan pembayaran sesuai instruksi</p>
+                            </div>
+                        </div>
+                        <div class="tracking-step">
+                            <div class="step-icon">
+                                <i class="fas fa-box"></i>
+                            </div>
+                            <div class="step-info">
+                                <h4>Sedang Diproses</h4>
+                                <p>Pesanan sedang disiapkan</p>
+                            </div>
+                        </div>
+                        <div class="tracking-step">
+                            <div class="step-icon">
+                                <i class="fas fa-truck"></i>
+                            </div>
+                            <div class="step-info">
+                                <h4>Dalam Pengiriman</h4>
+                                <p>Pesanan sedang dalam perjalanan</p>
+                            </div>
+                        </div>
+                        <div class="tracking-step">
+                            <div class="step-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="step-info">
+                                <h4>Pesanan Selesai</h4>
+                                <p>Pesanan telah sampai tujuan</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-support">
+                    <h2>Butuh Bantuan?</h2>
+                    <p>Jika Anda memiliki pertanyaan tentang pesanan ini, jangan ragu untuk menghubungi kami:</p>
+                    <div class="support-contacts">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+62 812-3456-7890</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>support@kedaikopi.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>WhatsApp: +62 812-3456-7890</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-coffee"></i>
+                        <span>Kedai Kopi</span>
+                    </div>
+                    <p>Menyajikan kopi berkualitas tinggi dengan cita rasa autentik Indonesia sejak 2020.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Produk</h3>
+                    <ul>
+                        <li><a href="#">Kopi Bubuk</a></li>
+                        <li><a href="#">Kopi Biji</a></li>
+                        <li><a href="#">Kopi Instan</a></li>
+                        <li><a href="#">Alat Seduh</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Layanan</h3>
+                    <ul>
+                        <li><a href="#">Cara Pemesanan</a></li>
+                        <li><a href="#">Pengiriman</a></li>
+                        <li><a href="#">Pembayaran</a></li>
+                        <li><a href="#">Retur & Refund</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Kontak</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Jl. Kopi Nusantara No. 123, Jakarta</p>
+                        <p><i class="fas fa-phone"></i> +62 812-3456-7890</p>
+                        <p><i class="fas fa-envelope"></i> info@kedaikopi.com</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Kedai Kopi. Semua hak dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/script.js"></script>
+    <script>
+        // Order confirmation specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            loadOrderConfirmation();
+        });
+
+        function loadOrderConfirmation() {
+            // Get order data from localStorage or URL parameters
+            const orderData = JSON.parse(localStorage.getItem('kedaikopi_last_order') || '{}');
+            
+            if (!orderData.orderId) {
+                // Generate sample order data for demo
+                orderData.orderId = 'KK' + new Date().getFullYear() + String(Math.floor(Math.random() * 10000)).padStart(4, '0');
+                orderData.date = new Date().toLocaleDateString('id-ID');
+                orderData.status = 'pending';
+                orderData.items = JSON.parse(localStorage.getItem('kedaikopi_cart') || '[]');
+                orderData.total = calculateCartTotal();
+                orderData.shipping = 15000;
+                orderData.paymentMethod = localStorage.getItem('kedaikopi_payment_method') || 'bank-transfer';
+                orderData.shippingAddress = JSON.parse(localStorage.getItem('kedaikopi_shipping_address') || '{}');
+            }
+
+            // Update order information
+            document.getElementById('orderNumber').textContent = orderData.orderId;
+            document.getElementById('orderDate').textContent = orderData.date;
+
+            // Load order items
+            loadOrderItems(orderData.items || []);
+
+            // Load payment instructions
+            loadPaymentInstructions(orderData.paymentMethod);
+
+            // Load shipping address
+            loadShippingAddress(orderData.shippingAddress);
+
+            // Update totals
+            updateOrderTotals(orderData);
+
+            // Clear cart after successful order
+            localStorage.removeItem('kedaikopi_cart');
+            updateCartUI();
+        }
+
+        function loadOrderItems(items) {
+            const itemsList = document.getElementById('orderItemsList');
+            
+            if (!items || items.length === 0) {
+                itemsList.innerHTML = '<p>Tidak ada item dalam pesanan.</p>';
+                return;
+            }
+
+            itemsList.innerHTML = items.map(item => `
+                <div class="order-item">
+                    <div class="item-image">
+                        <img src="${item.image}" alt="${item.name}" onerror="this.src='assets/images/placeholder.jpg'">
+                    </div>
+                    <div class="item-details">
+                        <h4>${item.name}</h4>
+                        <p>Harga: Rp ${item.price.toLocaleString('id-ID')}</p>
+                        <p>Jumlah: ${item.quantity}</p>
+                    </div>
+                    <div class="item-total">
+                        Rp ${(item.price * item.quantity).toLocaleString('id-ID')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function loadPaymentInstructions(paymentMethod) {
+            const instructionsContainer = document.getElementById('paymentInstructions');
+            
+            let instructions = '';
+            
+            switch (paymentMethod) {
+                case 'bank-transfer':
+                    instructions = `
+                        <div class="payment-bank">
+                            <h4>Transfer Bank</h4>
+                            <div class="bank-details">
+                                <p><strong>Bank BCA</strong></p>
+                                <p>No. Rekening: 1234567890</p>
+                                <p>Atas Nama: Kedai Kopi Indonesia</p>
+                                <p class="payment-note">Harap transfer sesuai dengan jumlah total dan kirim bukti transfer ke WhatsApp kami.</p>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                case 'e-wallet':
+                    instructions = `
+                        <div class="payment-ewallet">
+                            <h4>E-Wallet</h4>
+                            <div class="ewallet-details">
+                                <p><strong>GoPay / OVO / DANA</strong></p>
+                                <p>Nomor: +62 812-3456-7890</p>
+                                <p>Atas Nama: Kedai Kopi Indonesia</p>
+                                <p class="payment-note">Lakukan pembayaran melalui aplikasi e-wallet dan kirim screenshot bukti pembayaran.</p>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                case 'cod':
+                    instructions = `
+                        <div class="payment-cod">
+                            <h4>Bayar di Tempat (COD)</h4>
+                            <div class="cod-details">
+                                <p>Pembayaran akan dilakukan saat produk sampai di tujuan.</p>
+                                <p>Pastikan menyiapkan uang pas sesuai dengan total pesanan.</p>
+                                <p class="payment-note">Kurir akan menghubungi Anda sebelum pengiriman.</p>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                default:
+                    instructions = '<p>Metode pembayaran tidak dikenali.</p>';
+            }
+            
+            instructionsContainer.innerHTML = instructions;
+        }
+
+        function loadShippingAddress(address) {
+            const addressContainer = document.getElementById('shippingAddress');
+            
+            if (!address || !address.name) {
+                addressContainer.innerHTML = '<p>Alamat pengiriman tidak tersedia.</p>';
+                return;
+            }
+
+            addressContainer.innerHTML = `
+                <div class="address-details">
+                    <h4>${address.name}</h4>
+                    <p>${address.phone}</p>
+                    <p>${address.address}</p>
+                    <p>${address.city}, ${address.province} ${address.postalCode}</p>
+                </div>
+            `;
+        }
+
+        function updateOrderTotals(orderData) {
+            const subtotal = orderData.subtotal || calculateCartSubtotal();
+            const shipping = orderData.shipping || 15000;
+            const discount = orderData.discount || 0;
+            const total = subtotal + shipping - discount;
+
+            document.getElementById('subtotalAmount').textContent = `Rp ${subtotal.toLocaleString('id-ID')}`;
+            document.getElementById('shippingAmount').textContent = `Rp ${shipping.toLocaleString('id-ID')}`;
+            document.getElementById('grandTotalAmount').textContent = `Rp ${total.toLocaleString('id-ID')}`;
+
+            if (discount > 0) {
+                document.getElementById('discountRow').style.display = 'flex';
+                document.getElementById('discountAmount').textContent = `-Rp ${discount.toLocaleString('id-ID')}`;
+            }
+        }
+
+        function calculateCartSubtotal() {
+            const cart = JSON.parse(localStorage.getItem('kedaikopi_cart') || '[]');
+            return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+        }
+
+        function calculateCartTotal() {
+            const subtotal = calculateCartSubtotal();
+            const shipping = 15000;
+            return subtotal + shipping;
+        }
+
+        function printOrder() {
+            window.print();
+        }
+    </script>
+</body>
+</html>

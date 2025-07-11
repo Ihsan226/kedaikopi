@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Produk - Kedai Kopi</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-coffee"></i>
+                    <span>Kedai Kopi</span>
+                </div>
+                
+                <ul class="nav-menu">
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="index.html#products">Produk</a></li>
+                    <li><a href="cart.html">Keranjang</a></li>
+                    <li><a href="account.html">Akun</a></li>
+                </ul>
+                
+                <div class="nav-icons">
+                    <a href="cart.html" class="nav-icon cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <a href="account.html" class="nav-icon">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </div>
+                
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb-list">
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="index.html#products">Produk</a></li>
+                    <li id="productCategory">Kopi Bubuk</li>
+                    <li id="productName" class="active">Kopi Arabica Premium</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Product Detail Section -->
+            <section class="product-detail">
+                <div class="product-detail-container">
+                    <!-- Product Images -->
+                    <div class="product-images">
+                        <div class="main-image">
+                            <img id="mainProductImage" src="assets/images/arabica-premium.jpg" alt="Kopi Arabica Premium" onerror="this.src='assets/images/placeholder.jpg'">
+                            <button class="zoom-btn" onclick="zoomImage()">
+                                <i class="fas fa-search-plus"></i>
+                            </button>
+                        </div>
+                        <div class="image-thumbnails">
+                            <img src="assets/images/arabica-premium.jpg" alt="Thumbnail 1" class="thumbnail active" onclick="changeMainImage(this)" onerror="this.src='assets/images/placeholder.jpg'">
+                            <img src="assets/images/arabica-premium-2.jpg" alt="Thumbnail 2" class="thumbnail" onclick="changeMainImage(this)" onerror="this.src='assets/images/placeholder.jpg'">
+                            <img src="assets/images/arabica-premium-3.jpg" alt="Thumbnail 3" class="thumbnail" onclick="changeMainImage(this)" onerror="this.src='assets/images/placeholder.jpg'">
+                        </div>
+                    </div>
+
+                    <!-- Product Info -->
+                    <div class="product-info">
+                        <div class="product-header">
+                            <h1 id="productTitle">Kopi Arabica Premium</h1>
+                            <div class="product-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <span class="rating-text">(4.5/5 - 127 ulasan)</span>
+                            </div>
+                        </div>
+
+                        <div class="product-price">
+                            <span class="current-price" id="productPrice">Rp 85.000</span>
+                            <span class="original-price" id="originalPrice" style="display: none;">Rp 100.000</span>
+                            <span class="discount-badge" id="discountBadge" style="display: none;">15% OFF</span>
+                        </div>
+
+                        <div class="product-description">
+                            <h3>Deskripsi Produk</h3>
+                            <p id="productDescription">
+                                Kopi Arabica Premium dengan cita rasa yang halus dan aroma yang khas. 
+                                Dipetik dari kebun kopi terbaik di dataran tinggi Jawa Barat dengan 
+                                proses pengolahan yang sempurna. Cocok untuk pecinta kopi yang 
+                                menghargai kualitas premium dengan rasa yang tidak terlalu pahit.
+                            </p>
+                        </div>
+
+                        <div class="product-features">
+                            <h3>Spesifikasi</h3>
+                            <ul id="productFeatures">
+                                <li><strong>Jenis:</strong> Arabica Premium</li>
+                                <li><strong>Asal:</strong> Jawa Barat</li>
+                                <li><strong>Tingkat Sangrai:</strong> Medium Roast</li>
+                                <li><strong>Berat:</strong> 250g</li>
+                                <li><strong>Kemasan:</strong> Standing Pouch</li>
+                                <li><strong>Kadaluarsa:</strong> 12 bulan</li>
+                            </ul>
+                        </div>
+
+                        <div class="product-variants">
+                            <h3>Pilihan Ukuran</h3>
+                            <div class="variant-options">
+                                <div class="variant-option active" data-price="85000" data-weight="250g">
+                                    <span class="variant-size">250g</span>
+                                    <span class="variant-price">Rp 85.000</span>
+                                </div>
+                                <div class="variant-option" data-price="160000" data-weight="500g">
+                                    <span class="variant-size">500g</span>
+                                    <span class="variant-price">Rp 160.000</span>
+                                </div>
+                                <div class="variant-option" data-price="300000" data-weight="1kg">
+                                    <span class="variant-size">1kg</span>
+                                    <span class="variant-price">Rp 300.000</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-quantity">
+                            <h3>Jumlah</h3>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn minus" onclick="decreaseQuantity()">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <input type="number" id="productQuantity" value="1" min="1" max="10">
+                                <button class="quantity-btn plus" onclick="increaseQuantity()">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                            <span class="stock-info">Stok tersedia: <strong id="stockCount">50</strong></span>
+                        </div>
+
+                        <div class="product-actions">
+                            <button class="btn btn-primary add-to-cart-btn" onclick="addToCartFromDetail()">
+                                <i class="fas fa-shopping-cart"></i>
+                                Tambah ke Keranjang
+                            </button>
+                            <button class="btn btn-outline wishlist-btn" onclick="toggleWishlist()">
+                                <i class="far fa-heart"></i>
+                                Tambah ke Wishlist
+                            </button>
+                            <button class="btn btn-secondary buy-now-btn" onclick="buyNow()">
+                                <i class="fas fa-bolt"></i>
+                                Beli Sekarang
+                            </button>
+                        </div>
+
+                        <div class="product-benefits">
+                            <div class="benefit-item">
+                                <i class="fas fa-shipping-fast"></i>
+                                <span>Gratis ongkir untuk pembelian di atas Rp 200.000</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-undo"></i>
+                                <span>Garansi pengembalian 7 hari</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-certificate"></i>
+                                <span>Produk original dan berkualitas</span>
+                            </div>
+                        </div>
+
+                        <div class="share-product">
+                            <h3>Bagikan Produk</h3>
+                            <div class="share-buttons">
+                                <button class="share-btn facebook" onclick="shareProduct('facebook')">
+                                    <i class="fab fa-facebook"></i>
+                                </button>
+                                <button class="share-btn twitter" onclick="shareProduct('twitter')">
+                                    <i class="fab fa-twitter"></i>
+                                </button>
+                                <button class="share-btn whatsapp" onclick="shareProduct('whatsapp')">
+                                    <i class="fab fa-whatsapp"></i>
+                                </button>
+                                <button class="share-btn copy" onclick="copyProductLink()">
+                                    <i class="fas fa-link"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Product Tabs -->
+            <section class="product-tabs">
+                <div class="tab-headers">
+                    <button class="tab-header active" onclick="showTab('description')">Deskripsi Detail</button>
+                    <button class="tab-header" onclick="showTab('reviews')">Ulasan (127)</button>
+                    <button class="tab-header" onclick="showTab('shipping')">Pengiriman</button>
+                    <button class="tab-header" onclick="showTab('care')">Cara Penyimpanan</button>
+                </div>
+
+                <div class="tab-contents">
+                    <div id="description" class="tab-content active">
+                        <h3>Deskripsi Lengkap</h3>
+                        <p>
+                            Kopi Arabica Premium kami dipetik dari kebun kopi terbaik di dataran tinggi Jawa Barat 
+                            pada ketinggian 1200-1500 mdpl. Dengan proses pengolahan semi-washed yang sempurna, 
+                            menghasilkan biji kopi dengan kualitas premium yang memiliki karakteristik rasa yang unik.
+                        </p>
+                        <h4>Profil Rasa</h4>
+                        <ul>
+                            <li><strong>Aroma:</strong> Floral dengan hint buah-buahan</li>
+                            <li><strong>Rasa:</strong> Manis dengan sedikit asam yang menyegarkan</li>
+                            <li><strong>Body:</strong> Medium dengan tekstur yang halus</li>
+                            <li><strong>Aftertaste:</strong> Panjang dengan rasa cokelat ringan</li>
+                        </ul>
+                        <h4>Rekomendasi Seduhan</h4>
+                        <ul>
+                            <li><strong>Grind Size:</strong> Medium (untuk V60, Chemex)</li>
+                            <li><strong>Water Temperature:</strong> 92-96°C</li>
+                            <li><strong>Brew Ratio:</strong> 1:15 - 1:17</li>
+                            <li><strong>Brew Time:</strong> 3-4 menit</li>
+                        </ul>
+                    </div>
+
+                    <div id="reviews" class="tab-content">
+                        <div class="reviews-summary">
+                            <div class="rating-overview">
+                                <div class="overall-rating">
+                                    <span class="rating-number">4.5</span>
+                                    <div class="stars-large">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                    <span class="total-reviews">127 ulasan</span>
+                                </div>
+                                <div class="rating-breakdown">
+                                    <div class="rating-bar">
+                                        <span>5★</span>
+                                        <div class="bar"><div class="fill" style="width: 70%"></div></div>
+                                        <span>89</span>
+                                    </div>
+                                    <div class="rating-bar">
+                                        <span>4★</span>
+                                        <div class="bar"><div class="fill" style="width: 20%"></div></div>
+                                        <span>25</span>
+                                    </div>
+                                    <div class="rating-bar">
+                                        <span>3★</span>
+                                        <div class="bar"><div class="fill" style="width: 8%"></div></div>
+                                        <span>10</span>
+                                    </div>
+                                    <div class="rating-bar">
+                                        <span>2★</span>
+                                        <div class="bar"><div class="fill" style="width: 2%"></div></div>
+                                        <span>3</span>
+                                    </div>
+                                    <div class="rating-bar">
+                                        <span>1★</span>
+                                        <div class="bar"><div class="fill" style="width: 0%"></div></div>
+                                        <span>0</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="reviews-list">
+                            <div class="review-item">
+                                <div class="reviewer-info">
+                                    <div class="reviewer-avatar">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="reviewer-details">
+                                        <h4>Ahmad Rizki</h4>
+                                        <div class="review-stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <span class="review-date">15 Januari 2025</span>
+                                    </div>
+                                </div>
+                                <div class="review-content">
+                                    <p>Kopi yang luar biasa! Aromanya sangat harum dan rasanya tidak terlalu pahit. 
+                                    Cocok banget untuk yang suka kopi dengan rasa yang halus. Kemasan juga rapi dan 
+                                    pengiriman cepat. Pasti akan pesan lagi!</p>
+                                </div>
+                            </div>
+
+                            <div class="review-item">
+                                <div class="reviewer-info">
+                                    <div class="reviewer-avatar">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="reviewer-details">
+                                        <h4>Sari Wulandari</h4>
+                                        <div class="review-stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                        <span class="review-date">12 Januari 2025</span>
+                                    </div>
+                                </div>
+                                <div class="review-content">
+                                    <p>Kualitas kopinya bagus, tapi harganya sedikit mahal dibanding yang lain. 
+                                    Overall tetap puas dengan rasanya. Mungkin akan beli lagi kalau ada promo.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="shipping" class="tab-content">
+                        <h3>Informasi Pengiriman</h3>
+                        <div class="shipping-info-grid">
+                            <div class="shipping-option">
+                                <h4><i class="fas fa-truck"></i> Reguler (3-5 hari)</h4>
+                                <p>Pengiriman standar dengan JNE/Tiki/Pos Indonesia</p>
+                                <span class="shipping-cost">Rp 15.000</span>
+                            </div>
+                            <div class="shipping-option">
+                                <h4><i class="fas fa-rocket"></i> Express (1-2 hari)</h4>
+                                <p>Pengiriman kilat untuk wilayah Jabodetabek</p>
+                                <span class="shipping-cost">Rp 25.000</span>
+                            </div>
+                            <div class="shipping-option">
+                                <h4><i class="fas fa-gift"></i> Gratis Ongkir</h4>
+                                <p>Untuk pembelian minimal Rp 200.000</p>
+                                <span class="shipping-cost">Gratis</span>
+                            </div>
+                        </div>
+                        <div class="shipping-notes">
+                            <h4>Catatan Pengiriman:</h4>
+                            <ul>
+                                <li>Produk akan dikirim dalam 1x24 jam setelah pembayaran dikonfirmasi</li>
+                                <li>Estimasi waktu tergantung lokasi dan kondisi cuaca</li>
+                                <li>Kami akan memberikan nomor resi untuk tracking pengiriman</li>
+                                <li>Produk dikemas dengan bubble wrap untuk keamanan</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div id="care" class="tab-content">
+                        <h3>Cara Penyimpanan Kopi</h3>
+                        <div class="care-instructions">
+                            <div class="care-item">
+                                <div class="care-icon">
+                                    <i class="fas fa-thermometer-half"></i>
+                                </div>
+                                <div class="care-content">
+                                    <h4>Suhu Ruangan</h4>
+                                    <p>Simpan di tempat yang sejuk dan kering, hindari paparan langsung sinar matahari</p>
+                                </div>
+                            </div>
+                            <div class="care-item">
+                                <div class="care-icon">
+                                    <i class="fas fa-box"></i>
+                                </div>
+                                <div class="care-content">
+                                    <h4>Wadah Kedap Udara</h4>
+                                    <p>Gunakan wadah yang rapat untuk menjaga kesegaran dan aroma kopi</p>
+                                </div>
+                            </div>
+                            <div class="care-item">
+                                <div class="care-icon">
+                                    <i class="fas fa-tint"></i>
+                                </div>
+                                <div class="care-content">
+                                    <h4>Hindari Kelembaban</h4>
+                                    <p>Jauhkan dari tempat yang lembab seperti dekat kompor atau kulkas</p>
+                                </div>
+                            </div>
+                            <div class="care-item">
+                                <div class="care-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="care-content">
+                                    <h4>Konsumsi Segera</h4>
+                                    <p>Untuk cita rasa terbaik, gunakan dalam 2-4 minggu setelah kemasan dibuka</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Related Products -->
+            <section class="related-products">
+                <h2>Produk Terkait</h2>
+                <div class="products-grid">
+                    <!-- Related products will be loaded here -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Image Zoom Modal -->
+    <div id="imageZoomModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeImageZoom()">&times;</span>
+            <img id="zoomedImage" src="" alt="Zoomed Product Image">
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-coffee"></i>
+                        <span>Kedai Kopi</span>
+                    </div>
+                    <p>Menyajikan kopi berkualitas tinggi dengan cita rasa autentik Indonesia sejak 2020.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Produk</h3>
+                    <ul>
+                        <li><a href="#">Kopi Bubuk</a></li>
+                        <li><a href="#">Kopi Biji</a></li>
+                        <li><a href="#">Kopi Instan</a></li>
+                        <li><a href="#">Alat Seduh</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Layanan</h3>
+                    <ul>
+                        <li><a href="#">Cara Pemesanan</a></li>
+                        <li><a href="#">Pengiriman</a></li>
+                        <li><a href="#">Pembayaran</a></li>
+                        <li><a href="#">Retur & Refund</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Kontak</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Jl. Kopi Nusantara No. 123, Jakarta</p>
+                        <p><i class="fas fa-phone"></i> +62 812-3456-7890</p>
+                        <p><i class="fas fa-envelope"></i> info@kedaikopi.com</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Kedai Kopi. Semua hak dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/product-detail.js"></script>
+</body>
+</html>
